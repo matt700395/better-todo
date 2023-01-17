@@ -1,5 +1,9 @@
+import React from "react";
+
+import TodoTemplate from "./components/TodoTemplate";
+
 function App() {
-  return <div>Better Todo App</div>;
+  return <TodoTemplate>Better Todo App</TodoTemplate>;
 }
 
 export default App;
