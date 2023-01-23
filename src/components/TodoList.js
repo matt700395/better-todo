@@ -1,14 +1,34 @@
-import React from "react";
-import { Flex } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { CardBody, Flex } from "@chakra-ui/react";
 
 import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm";
 
 function TodoList() {
+  const [todoItemList, setTodoItemList] = useState([]);
+
+  useEffect(() => {
+    const sampleItemList = [
+      { id: 1, text: "Sample ToDo 1", isDefaultChecked: true },
+      { id: 2, text: "Sample ToDo 2", isDefaultChecked: false },
+    ];
+    setTodoItemList(sampleItemList);
+  }, []);
+
   return (
-    <Flex flexDir="column" flex={1} py={6} overflowY="scroll">
-      <TodoItem text="할 일 1" isDefaultChecked={true} />
-      <TodoItem text="할 일 2" isDefaultChecked={false} />
-    </Flex>
+    <CardBody display="flex" flexDir="column" overflowY="auto" p={0}>
+      <Flex flexDir="column" flex={1} py={4} overflowY="scroll">
+        {todoItemList.map((item) => (
+          <TodoItem
+            key={item.id}
+            id={item.id}
+            text={item.text}
+            isDefaultChecked={item.isDefaultChecked}
+          />
+        ))}
+      </Flex>
+      <TodoForm todoItemList={todoItemList} setTodoItemList={setTodoItemList} />
+    </CardBody>
   );
 }
 
