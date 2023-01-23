@@ -24,6 +24,8 @@ function TodoList() {
             id={item.id}
             text={item.text}
             isDefaultChecked={item.isDefaultChecked}
+            todoItemList={todoItemList}
+            setTodoItemList={setTodoItemList}
           />
         ))}
       </Flex>
