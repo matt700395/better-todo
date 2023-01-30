@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CardBody, Flex } from "@chakra-ui/react";
+import { CardBody, Flex, Spinner } from "@chakra-ui/react";
 
 import TodoItem from "./TodoItem";
 import TodoForm from "./TodoForm";
@@ -12,8 +12,13 @@ function TodoList() {
   if (isLoading || todoList === null) {
     return(
       <CardBody display="flex" flexDir="column" overflowY="auto" p={0}>
-      <Flex flexDir="column" flex={1} py={6} overflowY="scroll">
-        Loading...
+      <Flex flexDir="column" flex={1} py={6}
+      overflowY="scroll" 
+      justifyContent='conter'
+      alignItems='center'
+      >
+      <Spinner color='blue.500' size='xl' thickness="4px" emptyColor="red.200" speed="0.65s"/>
+
       </Flex>
       {/* <TodoForm todoItemList={todoList} setTodoItemList={setTodoItemList} /> */}
     </CardBody>
