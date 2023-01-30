@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-
-import { base } from "./api"
+import { base } from './api';
 
 export default function useTodo() {
-    const [ isLoading, setIsLoading ] = useState(flase);
-    const {isError, setIsError} = useState(false);
+    const [ isLoading, setIsLoading ] = useState(false);
+    const [isError, setIsError] = useState(false);
     const[todoList, setTodoList] = useState(null);
 
     const getTodoList = async () => {
