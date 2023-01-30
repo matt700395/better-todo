@@ -7,7 +7,7 @@ import useTodo from './../hooks/useTodo';
 
 function TodoList() {
   // const [todoItemList, setTodoItemList] = useState([]);
-  const [isLoading, isError, todoList, createTodo, updateTodo] = useTodo();
+  const [isLoading, isError, todoList, createTodo, updateTodo, deleteTodo] = useTodo();
 
   if (isLoading || todoList === null) {
     return(
@@ -41,6 +41,7 @@ function TodoList() {
             text={item.fields.text}
             isDefaultChecked={item.fields.isDone}
             updateTodo = {updateTodo}
+            deleteTodo = {deleteTodo}
           />
         ))}
       </Flex>

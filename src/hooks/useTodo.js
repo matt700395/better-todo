@@ -75,11 +75,37 @@ export default function useTodo() {
           });
         }
       };
+
+      
+      const deleteTodo = async (id) => {
+        try {
+          await base().delete(`/Todo/${id}`);
+          setTodoList(
+            todoList.filter((item) => {
+              return item.id !== id;
+            })
+          );
+          toast({
+            title: "할 일이 삭제되었습니다.",
+            status: "success",
+            duration: 2000,
+            position: "bottom",
+          });
+        } catch (error) {
+          toast({
+            title: "에러가 발생했습니다.",
+            status: "error",
+            duration: 2000,
+            position: "bottom",
+          });
+        }
+      };
+    
     
     
     useEffect(()=>{
         getTodoList();
     },[]);
 
-    return [isLoading, isError, todoList, createTodo, updateTodo];
+    return [isLoading, isError, todoList, createTodo, updateTodo, deleteTodo];
 }

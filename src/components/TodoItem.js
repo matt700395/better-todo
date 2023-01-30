@@ -7,11 +7,10 @@ function TodoItem(props) {
     props.updateTodo(props.id, e.target.checked)
   }
 
-  const deleteTodo = () => {
-    props.setTodoItemList(
-      props.todoItemList.filter((item) => item.id !== props.id)
-    );
+  const deleteItem = () => {
+    props.deleteTodo(props.id);
   };
+
 
   return (
     <Flex
@@ -23,7 +22,7 @@ function TodoItem(props) {
       <Checkbox size="lg" defaultChecked={props.isDefaultChecked} onChange={handleIsDone}>
         {props.text}
       </Checkbox>
-      <IconButton icon={<DeleteIcon />} size="sm" ml={2} onClick={deleteTodo} />
+      <IconButton icon={<DeleteIcon />} size="sm" ml={2} onClick={deleteItem} />
     </Flex>
   );
 }
