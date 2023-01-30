@@ -50,10 +50,36 @@ export default function useTodo() {
  
         }
     };
+
+    const updateTodo = async (id, isDone) => {
+        try {
+          const response = await base().patch(`/Todo/${id}`, {
+            fields: {
+              isDone: isDone,
+            },
+          });
+          setTodoList(
+            todoList.map((item) => {
+              if (item.id === id) {
+                return response.data;
+              }
+              return item;
+            })
+          );
+        } catch (error) {
+          toast({
+            title: "에러가 발생했습니다.",
+            status: "error",
+            duration: 2000,
+            position: "bottom",
+          });
+        }
+      };
+    
     
     useEffect(()=>{
         getTodoList();
     },[]);
 
-    return [isLoading, isError, todoList];
+    return [isLoading, isError, todoList, createTodo, updateTodo];
 }

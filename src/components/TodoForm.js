@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, FormControl, Input } from "@chakra-ui/react";
 
-function TodoForm({ todoItemList, setTodoItemList }) {
+
+function TodoForm({ todoItemList, setTodoItemList, createTodo }) {
   const [todoInputText, setTodoInputText] = useState("");
 
   const handleTodoInputTextChange = (e) => {
@@ -12,14 +13,7 @@ function TodoForm({ todoItemList, setTodoItemList }) {
     if (todoInputText === "") {
       return;
     }
-    setTodoItemList([
-      ...todoItemList,
-      {
-        id: new Date().getTime() + Math.random(),
-        text: todoInputText,
-        isDefaultChecked: false,
-      },
-    ]);
+    createTodo(todoInputText);
     setTodoInputText("");
   };
 

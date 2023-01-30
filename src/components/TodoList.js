@@ -7,7 +7,7 @@ import useTodo from './../hooks/useTodo';
 
 function TodoList() {
   // const [todoItemList, setTodoItemList] = useState([]);
-  const [isLoading, isError, todoList] = useTodo();
+  const [isLoading, isError, todoList, createTodo, updateTodo] = useTodo();
 
   if (isLoading || todoList === null) {
     return(
@@ -40,10 +40,11 @@ function TodoList() {
             id={item.id}
             text={item.fields.text}
             isDefaultChecked={item.fields.isDone}
+            updateTodo = {updateTodo}
           />
         ))}
       </Flex>
-      {/* <TodoForm todoItemList={todoList} setTodoItemList={setTodoItemList} /> */}
+      <TodoForm createTodo={createTodo} />
     </CardBody>
   );
 }
