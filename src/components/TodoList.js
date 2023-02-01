@@ -36,6 +36,17 @@ function TodoList() {
     )
   }
 
+  if (todoList.length === 0) {
+    return(
+      <CardBody display="flex" flexDir="column" overflowY="auto" p={0}>
+      <Flex flexDir="column" flex={1} py={6} px={8} overflowY="scroll">
+        할일이 없습니다.
+      </Flex>
+      <TodoForm createTodo={createTodo} />
+    </CardBody>
+    )
+  }
+
   return (
     <CardBody display="flex" flexDir="column" overflowY="auto" p={0}>
       <Flex flexDir="column" flex={1} py={6} overflowY="scroll">
